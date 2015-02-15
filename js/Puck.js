@@ -42,23 +42,24 @@ var Puck = function (startX, startY, radius, canvasObject, canvasContext) {
 	}
 
 	var checkCollisions = function(pusher) {
-		var X = x - pusher.x; // x Component of the vector from puck to pusher
-        var Y = y - pusher.y; // y Component of the vector from puck to pusher
+		var X = x - pusher.x(); // x Component of the vector from puck to pusher
+        var Y = y - pusher.y(); // y Component of the vector from puck to pusher
         var a  = Math.sqrt(X * X + Y * Y); // Magnitude of the vector from puck to pusher
         //dot product of unit distance vector
         //then the formula
-        if(a == r + pusher.r){
+        console.log(a);
+        if(a <= r + pusher.r() + 1){
             var c = 2 * ((velX * X + velY * Y) / (X * X + Y * Y));
             velX = velX - c * X;
             velY = velY - c * Y;
-        } else if(a < r + pusher.){
-            x = ((r + pusher.r) / a) * X + pusher.x - canvas.width;
-            y = ((r + pusher.r) / a) * Y + pusher.y - canvas.height;
-            X = x - pusher.getX();
-            Y = y - pusher.getY();
+        } else if(a < r + pusher.r()){
+            x = ((r + pusher.r()) / a) * X + pusher.x() - canvas.width / 2;
+            y = ((r + pusher.r()) / a) * Y + pusher.y() - canvas.height / 2;
+            X = x - pusher.x();
+            Y = y - pusher.y();
             var c = 2 * ((velX * X + velY * Y) / (X * X + Y * Y));
-            setVelX(velX - c * X);
-            setVelY(velY - c * Y);
+            velX = velX - c * X;
+            velY = velY - c * Y;
         }
 	}
 

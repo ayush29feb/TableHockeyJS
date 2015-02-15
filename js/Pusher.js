@@ -37,7 +37,22 @@ var Pusher = function (startX, startY, radius, canvasObject, canvasContext) {
 		draw();
 	};
 
+	var getX = function(){
+		return x;
+	};
+
+	var getY = function(){
+		return y;
+	};
+
+	var getR = function(){
+		return r;
+	}
+
 	return {
+		x: getX,
+		y: getY,
+		r: getR,
 		draw: draw,
 		update: update
 	}

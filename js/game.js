@@ -50,7 +50,7 @@ var Game = function() {
 	puck = new Puck(350, 350, 20, canvas, context);
 	puck.draw();
 
-	localPlayer = new Pusher(350, 350, 25, canvas, context);
+	localPlayer = new Pusher(350, 600, 25, canvas, context);
 	localPlayer.draw();
 
 	$('#gameCanvas').on( "mousemove", function( event ) {
@@ -60,5 +60,5 @@ var Game = function() {
 		puck.draw();
 	});
 
-	setInterval(update, 10);
+	setInterval(update, 1);
 };
